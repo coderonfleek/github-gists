@@ -1,0 +1,8 @@
+<h2>Public Gists</h2>
+
+<p *ngIf="loading">
+        <i>Loading Gists...</i>
+      </p>
+
+<div class="row">&nbsp;</div>
+<app-gist *ngFor="let gist of gists" [gist]="gist"></app-gist>

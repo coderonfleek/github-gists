@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12">
+
+      <p *ngIf="loading">
+        <i>Loading Gist...</i>
+      </p>
+
+      <h2>Edit Gist</h2>
+  
+        <div class="row">&nbsp;</div>
+  
+        <form *ngIf="gist">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)] ="gist.description" name="description" placeholder="Gist Description" required>
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)] ="gist.filename" name="filename" placeholder="File Name, leave blank if you are not changing it">
+          </div>
+          <div class="form-group">
+            <textarea rows="4" cols="100" [(ngModel)] ="gist.content" name="content" placeholder="File Contents, leave blank if you are not changing it"></textarea>
+          </div>
+          
+          <button type="button" [disabled]="processing" class="btn btn-primary" (click)="editGist(gist)">
+            {{(processing)? 'Editing Gist...' : 'Edit Gist'}}
+          </button>
+        </form>
+  
+    </div>
+    
+  
+  </div>

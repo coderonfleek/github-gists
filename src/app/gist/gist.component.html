@@ -1,0 +1,52 @@
+<div class="row gist_container" *ngIf="!gist.deleted">
+    <div class="col-md-12">
+      <div class="row gist_brief">
+        <div class="col-md-4">
+          <p class="gist_description text-primary">
+            {{gist.description}}
+          </p>
+          <small class="gist_date">{{gist.created_at}}</small>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <button class="btn btn-sm btn-primary" type="button" (click)="goToGist(gist.id)">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              View
+            </button>
+            &nbsp;
+            <button *ngIf="!isPublic()" class="btn btn-sm btn-default" type="button" (click)="goToEdit(gist.id)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              Edit
+            </button>
+            &nbsp;
+            <button *ngIf="!isPublic() && !gist.starred" class="btn btn-sm btn-success" type="button" (click)="starGist(gist.id)" [disabled]="starring">
+                <i class="fa fa-star" aria-hidden="true"></i>
+              Star
+            </button>
+            &nbsp;
+            <button *ngIf="gist.starred" class="btn btn-sm btn-warning" type="button" (click)="unStarGist(gist.id)" [disabled]="starring">
+                <i class="fa fa-ban" aria-hidden="true"></i>
+              Unstar
+            </button>
+            &nbsp;
+            <button *ngIf="!isPublic()" class="btn btn-sm btn-danger" type="button" (click)="deleteGist(gist.id)" [disabled]="deleting">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+              Delete
+            </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-danger">File <a href="{{gist.file.raw_url}}" target="_blank">
+            <span class="text-info">(/{{gist.file.filename}})</span></a>
+          </p> 
+
+          <p *ngIf="gist.owner && gist.starred">
+            <i class="fa fa-3x fa-star" style="color:yellow">
+
+            </i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>

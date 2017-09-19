@@ -1,0 +1,8 @@
+<p *ngIf="loading">
+  <i>Loading Gist...</i>
+</p>
+
+<p *ngIf="errMsg">
+  {{errMsg}}
+</p>
+<app-gist *ngIf="gist" [gist]="gist"></app-gist>
